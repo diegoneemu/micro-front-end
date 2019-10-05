@@ -4,7 +4,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { initReactI18next } from "react-i18next";
 import App from "./components/App";
-import Login from "./components/Login";
 import { load } from "./locale/loadLocale";
 
 const root = document.getElementById("root");
@@ -43,10 +42,6 @@ function app() {
   );
 }
 
-function login() {
-  ReactDOM.render(<Login />, root);
-}
-
 function setGlobalSessionData(data: any) {
   window.global.session = data;
 
@@ -79,6 +74,4 @@ function localeSettings(locale: string) {
 
 localeSettings(defaultLanguage);
 
-// TODO: carregar o usuário a partir do back
-if (false) login();
-else app();
+app();

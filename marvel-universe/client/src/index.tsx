@@ -7,7 +7,7 @@ import { load } from "./locale/loadLocale";
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-const root = document.getElementById("root");
+const root = document.getElementById("root2");
 const defaultLanguage = "pt-BR";
 
 interface ISession {
@@ -41,10 +41,6 @@ function app() {
     </StoreProvider>,
     root
   );
-}
-
-function login() {
-  ReactDOM.render(<App />, root);
 }
 
 function setGlobalSessionData(data: any) {
@@ -81,4 +77,4 @@ localeSettings(defaultLanguage);
 
 // TODO: carregar o usuário a partir do back
 
-if (!window.global.session.user) ReactDOM.render(<App />, root);
+ReactDOM.render(<App />, root);

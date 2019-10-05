@@ -21,7 +21,19 @@ module.exports = {
   entry: {
     core: "./core/client/src/index.tsx",
     dc: "./dc-universe/client/src/index.tsx",
-    sw: "./sw-fan-page/src/index.js"
+    sw: "./sw-fan-page/src/index.js",
+    marvel: "./marvel-universe/client/src/index.tsx"
+    /* commons: [
+      "circular-dependency-plugin",
+      "i18next",
+      "moment",
+      "react",
+      "react-dom",
+      "react-i18n",
+      "react-i18next",
+      "react-router-dom",
+      "webpack-split-chunks"
+    ] */
   },
   output: {
     path: path.resolve(__dirname, "build"),
@@ -31,17 +43,13 @@ module.exports = {
   module: { rules },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./index.html"
+      template: "./index.html",
+      chunks: ["core", "marvel", "vendors"]
     }),
     new CircularDependencyPlugin({
-      // exclude detection of files based on a RegExp
       exclude: /a\.js|node_modules/,
-      // add errors to webpack instead of warnings
       failOnError: true,
-      // allow import cycles that include an asyncronous import,
-      // e.g. via import(/* webpackMode: "weak" */ './file.js')
-      allowAsyncCycles: false,
-      // set the current working directory for displaying module paths
+      allowAsyncCycles: true,
       cwd: process.cwd()
     })
   ],
@@ -51,29 +59,29 @@ module.exports = {
   devServer: {
     contentBase: "./",
     port: 5000
-  },
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-      minSize: 30000,
-      maxSize: 0,
-      minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: 3,
-      automaticNameDelimiter: "~",
-      automaticNameMaxLength: 30,
-      name: true,
-      cacheGroups: {
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      }
-    }
   }
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: "all",
+  //     minSize: 30000,
+  //     maxSize: 0,
+  //     minChunks: 1,
+  //     maxAsyncRequests: 5,
+  //     maxInitialRequests: 3,
+  //     automaticNameDelimiter: "~",
+  //     automaticNameMaxLength: 30,
+  //     name: true,
+  //     cacheGroups: {
+  //       vendors: {
+  //         test: /[\\/]node_modules[\\/]/,
+  //         priority: -10
+  //       },
+  //       default: {
+  //         minChunks: 2,
+  //         priority: -20,
+  //         reuseExistingChunk: false
+  //       }
+  //     }
+  //   }
+  // }
 };

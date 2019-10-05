@@ -12,7 +12,7 @@ const rules = [
 module.exports = {
   target: "web",
   mode: "development",
-  entry: { core: "./src/index.tsx" },
+  entry: { marvel: "./src/index.tsx" },
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "[name]~bundle.js"
@@ -29,7 +29,8 @@ module.exports = {
   },
   devServer: {
     contentBase: "./",
-    port: 5000
+    port: 5000,
+    writeToDisk: true
   },
   optimization: {
     splitChunks: {

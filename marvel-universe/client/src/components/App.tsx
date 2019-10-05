@@ -35,7 +35,7 @@ export default function App(): JSX.Element {
   const [todos, setTodos] = useState<ITodo[]>([]);
 
   // fetch data
-  const fetchUserData = async () => {
+  /* const fetchUserData = async () => {
     const URL = "/user";
     const data = await fetch(URL);
     const dataJSON = await data.json();
@@ -43,7 +43,7 @@ export default function App(): JSX.Element {
       type: ContextActions.FETCH_USER,
       payload: dataJSON
     });
-  };
+  }; */
 
   // handlers
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {

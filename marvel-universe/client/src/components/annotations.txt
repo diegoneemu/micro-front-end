@@ -1,0 +1,10 @@
+Rodar multiplas configurações sequêncialmente -> https://www.viget.com/articles/run-multiple-webpack-configs-sequentially/
+
+Considerações v0
+- Todas as apps serão desenvolvidas em react
+- Uma página terá somente componentes de uma squad
+- Novas versões de componentes devem gerar um novo componente apenas para aquela squad como é hoje
+
+Como deverá ficar o backend de cada micro front end?
+Como buscar, em tempo de execução, o micro front end (chunk) e como ele se comunicará com o sua stack?
+Como tratar o sistema de permissões?

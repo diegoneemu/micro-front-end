@@ -1,12 +1,11 @@
 import React, { useContext, useReducer } from "react";
-import { IUser } from "../index";
 
 export enum ContextActions {
   FETCH_USER = "FETCH_USER"
 }
 
 export interface IState {
-  user: IUser;
+  user: any;
 }
 
 export interface MFront {

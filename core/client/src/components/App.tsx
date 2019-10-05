@@ -1,19 +1,11 @@
-import React, {
-  useState,
-  useReducer,
-  FormEvent,
-  Fragment,
-  useEffect
-} from "react";
-import { Link, BrowserRouter, Switch, Route } from "react-router-dom";
-import loadable from "react-loadable";
-import { Store, IState, IAction, ContextActions, MFront } from "../store/Store";
-import { load } from "../locale/loadLocale";
+import React, { FormEvent, useEffect, useReducer, useState } from "react";
+import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
+import { IAction, IState, MFront, Store } from "../store/Store";
 
-enum EActions {
+/* enum EActions {
   ADD = "ADD",
   DEL = "DEL"
-}
+} */
 
 interface ITodo {
   text: string;
@@ -41,10 +33,10 @@ export default function App(): JSX.Element {
   // reducer
   const reducer = (state: MFront, action: IAction): MFront => {
     switch (action.type) {
-      case EActions.ADD:
+      case "ADD":
         const mFront = action.payload;
         return { element: mFront, ...state };
-      case EActions.DEL:
+      case "DEL":
         return { element: null, ...state };
       default:
         return state;
@@ -58,20 +50,20 @@ export default function App(): JSX.Element {
   const [value, setValue] = useState<string>("");
   const [todos, setTodos] = useState<ITodo[]>([]);
 
-  useEffect(() => {
-    console.log("load core front end");
-    import(`../../../../dc-universe/client/src/components/App`).then(
-      (module: any) => {
-        dispatch({
-          type: EActions.ADD,
-          payload: { element: module.default, id: "1234" }
-        });
-      }
-    );
-  }, []);
+  // useEffect(() => {
+  //   console.log("load core front end");
+  //   import(`../../../../marvel-universe/client/src/components/App`).then(
+  //     (module: any) => {
+  //       dispatch({
+  //         type: "ADD",
+  //         payload: { element: module.default, id: "1234" }
+  //       });
+  //     }
+  //   );
+  // }, []);
 
   // fetch data
-  const fetchUserData = async () => {
+  /* const fetchUserData = async () => {
     const URL = "/user";
     const data = await fetch(URL);
     const dataJSON = await data.json();
@@ -79,7 +71,7 @@ export default function App(): JSX.Element {
       type: ContextActions.FETCH_USER,
       payload: dataJSON
     });
-  };
+  }; */
 
   // handlers
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
@@ -123,7 +115,7 @@ export default function App(): JSX.Element {
     <>
       <h1>Core Front End</h1>
       <p>Create todos for organize your life in HQs Universe</p>
-      <div>Headers Component</div>
+      <h2>Aqui vai ser o header de nível 2</h2>
       <div>
         Menu Bar
         <BrowserRouter>
