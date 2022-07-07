@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "i18next": "^17.0.13",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react": "16.9.0",
     "react-dom": "16.9.0",
     "react-i18n": "1.0.1",
